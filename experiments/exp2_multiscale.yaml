@@ -1,0 +1,23 @@
+# Experiment 2: Multi-Scale CLIP
+# Use features from multiple transformer layers
+
+experiment_name: "exp2_multiscale_clip"
+model_type: "multiscale_clip"
+model_name: "openai/clip-vit-base-patch32"
+
+# Multi-scale settings
+layers: [-1, -3, -6, -9]  # Extract from last, 3rd, 6th, 9th layers from end
+
+# Dataset
+dataset: "winoground"
+batch_size: 32
+num_workers: 4
+local_data_path: "data/winoground"  # Use locally downloaded dataset
+
+# No training for multi-scale baseline
+num_epochs: 0
+
+# Logging
+save_dir: "checkpoints/exp2_multiscale"
+
+device: "cuda"

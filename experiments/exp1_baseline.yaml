@@ -1,0 +1,27 @@
+# Experiment 1: CLIP Baseline
+# Just evaluate pre-trained CLIP without training
+
+experiment_name: "exp1_clip_baseline"
+model_type: "clip"
+model_name: "openai/clip-vit-base-patch32"
+
+# Dataset
+dataset: "winoground"
+batch_size: 32
+num_workers: 4
+local_data_path: "data/winoground"  # Use locally downloaded dataset
+
+# Training (will be skipped for baseline)
+num_epochs: 0
+learning_rate: 1e-4
+weight_decay: 0.01
+
+# Evaluation
+use_hard_negatives: false
+
+# Logging
+save_dir: "checkpoints/exp1_baseline"
+save_every: 5
+
+# Device
+device: "cuda"

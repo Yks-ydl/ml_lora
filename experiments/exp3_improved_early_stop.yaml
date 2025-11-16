@@ -1,0 +1,33 @@
+# Experiment 3 Improved: LoRA with Early Stopping
+# 改进版 LoRA 训练 - 添加早停机制和更保守的参数
+
+experiment_name: "exp3_lora_improved_early_stop"
+model_type: "lora"
+model_name: "openai/clip-vit-base-patch32"
+
+# LoRA settings
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.1
+
+# Dataset
+dataset: "winoground"
+batch_size: 16
+num_workers: 4
+local_data_path: "data/winoground"
+
+# Training - 改进的参数
+num_epochs: 50              # 减少到 10 (原来 20)
+learning_rate: 2e-5         # 降低学习率 (原来 5e-5)
+weight_decay: 0.05          # 增加权重衰减 (原来 0.01)
+use_hard_negatives: false
+
+# Early Stopping - 新增
+early_stopping_patience: 3  # 3 个 epoch 没提升就停止
+monitor_metric: "avg_recall@5"  # 监控 Recall@5
+
+# Logging
+save_dir: "checkpoints/exp3_improved"
+save_every: 2
+
+device: "cuda"

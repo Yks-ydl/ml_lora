@@ -1,0 +1,30 @@
+# Experiment 3: LoRA Fine-tuning on Winoground
+# Fine-tune CLIP with LoRA on Winoground dataset
+
+experiment_name: "exp3_lora_winoground"
+model_type: "lora"
+model_name: "openai/clip-vit-base-patch32"
+
+# LoRA settings
+lora_r: 16  # LoRA rank (try 8, 16, 32)
+lora_alpha: 32  # LoRA alpha (typically 2*lora_r)
+lora_dropout: 0.1
+
+# Dataset
+dataset: "winoground"
+batch_size: 16  # Smaller batch for training
+num_workers: 4
+local_data_path: "data/winoground"  # Path to locally downloaded dataset
+# auth_token: "YOUR_HUGGINGFACE_TOKEN"  # Only needed if downloading from HuggingFace
+
+# Training
+num_epochs: 20
+learning_rate: 5e-5  # Lower LR for fine-tuning
+weight_decay: 0.01
+use_hard_negatives: true  # Use hard negatives for Winoground
+
+# Logging
+save_dir: "checkpoints/exp3_lora"
+save_every: 5
+
+device: "cuda"

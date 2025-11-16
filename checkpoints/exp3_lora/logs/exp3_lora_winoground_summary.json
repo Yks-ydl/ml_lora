@@ -1,0 +1,53 @@
+{
+  "experiment_name": "exp3_lora_winoground",
+  "start_time": "2025-11-13T13:10:56.955171",
+  "end_time": "2025-11-13T13:41:23.004529",
+  "duration_minutes": 30.434155966666665,
+  "config": {
+    "experiment_name": "exp3_lora_winoground",
+    "model_type": "lora",
+    "model_name": "openai/clip-vit-base-patch32",
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.1,
+    "dataset": "winoground",
+    "batch_size": 16,
+    "num_workers": 4,
+    "local_data_path": "data/winoground",
+    "num_epochs": 20,
+    "learning_rate": "5e-5",
+    "weight_decay": 0.01,
+    "use_hard_negatives": true,
+    "save_dir": "checkpoints/exp3_lora",
+    "save_every": 5,
+    "device": "cuda"
+  },
+  "final_metrics": {
+    "test": {
+      "i2t_recall@1": 41.875,
+      "i2t_recall@5": 85.0,
+      "i2t_recall@10": 92.5,
+      "t2i_recall@1": 40.0,
+      "t2i_recall@5": 81.875,
+      "t2i_recall@10": 90.0,
+      "avg_recall@1": 40.9375,
+      "avg_recall@5": 83.4375,
+      "avg_recall@10": 91.25,
+      "i2t_median_rank": 2.0,
+      "t2i_median_rank": 2.0,
+      "i2t_mrr": 0.6093279832073474,
+      "t2i_mrr": 0.5943226959207057,
+      "avg_mrr": 0.6018253395640265,
+      "i2t_map": 0.6093279832073474,
+      "t2i_map": 0.5943226959207057,
+      "avg_map": 0.6018253395640265,
+      "text_score": 11.25,
+      "image_score": 32.5,
+      "group_score": 7.5
+    }
+  },
+  "total_epochs": 20,
+  "best_epoch": 2,
+  "best_metric": "val_i2t_recall@10",
+  "best_value": 92.5
+}
